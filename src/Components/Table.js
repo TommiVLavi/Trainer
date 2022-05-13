@@ -9,8 +9,8 @@ export default function Table(props){
 
             <AgGridReact
                 columnDefs={props.columns}
-                rowData={props.customers}
-
+                rowData={props.data}
+                animateRows={true}
             >
             </AgGridReact>
         </div>

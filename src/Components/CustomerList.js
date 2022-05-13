@@ -8,7 +8,7 @@ export default function Customers(){
         fetchData()
     },[])
 
-    const fetchData =( ) => {
+    const fetchData = () => {
         fetch('https://customerrest.herokuapp.com/api/customers')
         .then(resp => resp.json())
         .then(data => {
@@ -29,7 +29,7 @@ export default function Customers(){
 
     return(
         <div>
-            <Table columns={columns} customers={customers}/>
+            <Table columns={columns} data={customers}/>
         </div>
     )
 }
