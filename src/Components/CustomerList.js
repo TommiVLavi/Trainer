@@ -3,6 +3,8 @@ import Table from './Table'
 import Add from './AddCust'
 import Delete from './Delete'
 import Edit from './EditCust'
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 
 export default function Customers(){
@@ -86,6 +88,11 @@ export default function Customers(){
     }
 
 
+    const exportData = () => {
+        gridRef.current.exportDataAsCsv();
+    }
+
+
     const columns = [{
         headerName: 'CUSTOMERS',
         children: [
@@ -102,9 +109,15 @@ export default function Customers(){
     return(
         <div>
             <Table columns={columns} data={customers} gridRef={gridRef} />
-            <Add saveIt={saveCust} setSingle={setSingle} single={single} />
-            <Edit editIt={editCust} setSingle={setSingle} single={single}/>
-            <Delete deleteIt={deleteCust}/>
+
+            <Stack direction="row" spacing={1} justifyContent="center" alignItems="center">
+                <Add saveIt={saveCust} setSingle={setSingle} single={single} />
+                <Edit editIt={editCust} setSingle={setSingle} single={single}/>
+                <Delete deleteIt={deleteCust}/>
+                <Button variant="contained" size="small" onClick={exportData}>
+                    export
+                </Button>
+            </Stack>
         </div>
     )
 }

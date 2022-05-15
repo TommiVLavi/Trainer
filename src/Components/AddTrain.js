@@ -8,6 +8,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 
+
+
 export default function Add(props){
 
     const [open, setOpen] = useState(false);
@@ -49,6 +51,7 @@ export default function Add(props){
                         value={props.single.date}
                         name="date"
                     />
+
 
                     <TextField
                         autoFocus

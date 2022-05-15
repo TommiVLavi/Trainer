@@ -3,11 +3,12 @@ import Table from './Table'
 import Add from './AddTrain'
 import Delete from './Delete'
 import Edit from './EditTrain'
+import Stack from '@mui/material/Stack';
 import parseJSON from 'date-fns/parseJSON'
 
 export default function Trainings(){
     const [trainings, setTrain] = useState([]);
-    const [single, setSingle] = useState ({date: '', duration: 0, activity: '', customer: ''})
+    const [single, setSingle] = useState ({date: new Date(), duration: 0, activity: '', customer: ''})
     const [state, setState] = useState(1)
     const gridRef = useRef();
 
@@ -97,14 +98,6 @@ export default function Trainings(){
         }
     }
 
-    const fetchCust = () => {
-
-        console.log(trainings)
-
-
-    }
-
-
     const columns = [{
       headerName: 'TRAININGS',
       children: [
@@ -119,10 +112,14 @@ export default function Trainings(){
     return(
         <div>
             <Table columns={columns} data={trainings} gridRef={gridRef}/>
-            <Add saveIt={saveTrain} setSingle={setSingle} single={single} data={trainings} custData={customers} singCust={singCust}/>
-            <Edit editIt={editTrain} setSingle={setSingle} single={single}/>
-            <Delete deleteIt={deleteTrain}/>
-            <button onClick={fetchCust}>Customers</button>
+            
+
+            <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
+                <Add saveIt={saveTrain} setSingle={setSingle} single={single} data={trainings} custData={customers} singCust={singCust}/>
+                <Edit editIt={editTrain} setSingle={setSingle} single={single}/>
+                <Delete deleteIt={deleteTrain}/>
+            </Stack>
+            
         </div>
     )
 }
